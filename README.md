@@ -1,10 +1,14 @@
-# 🔐 Sistema de Autenticación con OTP (2FA) - FastAPI
+# Sistema de Autenticación con OTP (2FA) - FastAPI
 
 Sistema de autenticación backend robusto y seguro desarrollado con **FastAPI**, **SQLAlchemy**, base de datos **SQLite** y autenticación de dos factores (2FA) mediante códigos **OTP (One-Time Password)** de 6 dígitos enviados por correo electrónico a través de SMTP.
 
+## Enlace de Despliegue en Vivo (Producción - Render)
+* **Swagger UI (Documentación Interactiva):** [https://parcial-fastapi-otp-ghdd.onrender.com/docs](https://parcial-fastapi-otp-ghdd.onrender.com/docs)
+* **API Health Check:** [https://parcial-fastapi-otp-ghdd.onrender.com/](https://parcial-fastapi-otp-ghdd.onrender.com/)
+
 ---
 
-## 📋 1. Características y Requisitos Técnicos
+## 1. Características y Requisitos Técnicos
 
 * **Backend Framework:** FastAPI (Python 3.9+)
 * **ORM y Base de Datos:** SQLAlchemy con SQLite (`sql_app.db`)
@@ -19,7 +23,7 @@ Sistema de autenticación backend robusto y seguro desarrollado con **FastAPI**,
 
 ---
 
-## 📂 2. Estructura del Proyecto
+## 2. Estructura del Proyecto
 
 ```text
 proyecto_parcial/
