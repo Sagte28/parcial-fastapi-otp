@@ -48,11 +48,12 @@ def login(credentials: UserLogin, db: Session = Depends(get_db)):
     
     otp_code = generate_and_save_otp(db, user.id)
     email_sent = send_otp_email(user.email, otp_code)
-    if not email_sent:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="No fue posible enviar el código OTP por correo."
-        )
+    
+    # Devolvemos el código directamente en el JSON para verlo en Swagger UI
+    return {
+        "message": "Credenciales válidas. Código OTP generado.",
+        "debug_otp_code": otp_code  # <-- ¡Aquí aparecerá en la página de FastAPI!
+    }
     
     return {"message": "Credenciales válidas. Se ha enviado un código OTP a su correo electrónico."}
 
@@ -82,7 +83,11 @@ def resend_otp(data: OTPResend, db: Session = Depends(get_db)):
     
     otp_code = generate_and_save_otp(db, user.id)
     send_otp_email(user.email, otp_code)
-    return {"message": "Se ha enviado un nuevo código OTP a su correo electrónico."}
+    
+    return {
+        "message": "Se ha enviado un nuevo código OTP.",
+        "debug_otp_code": otp_code  # <-- Aquí también
+    }
 
 @router.post("/refresh", response_model=TokenResponse, status_code=status.HTTP_200_OK)
 def refresh_token(
